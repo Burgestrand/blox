@@ -1,5 +1,4 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('./version', File.dirname(__FILE__))
 
 Gem::Specification.new do |gem|
   gem.name          = "Numerous blocks"
@@ -9,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.homepage      = "http://github.com/Burgestrand/numerous_blocks"
 
   gem.files         = `git ls-files`.split($\)
-  gem.test_files    = 'numerous_blocks_spec.rb'
+  gem.test_files    = 'numerous_blocks.rb'
   gem.require_paths = ["."]
   gem.version       = "1.0.0"
 end
