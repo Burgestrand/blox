@@ -17,13 +17,13 @@ def accepts_multiple_blocks(is_awesome, &block)
   end
 end
 
-accepts_multiple_blocks(:awesome) do |when|
-  when.awesome do |&block|
+accepts_multiple_blocks(:awesome) do |is|
+  is.awesome do |&block|
     puts "Very awesome!"
     block.call
   end
 
-  when.not_awesome do
+  is.not_awesome do
     puts "Not so awesome"
   end
 end
@@ -32,7 +32,7 @@ accepts_multiple_blocks(:not_awesome) do |event|
   if event.not_awesome?
     puts ":("
   else
-    puts "\o/!"
+    puts "\\o/!"
   end
 end
 ```
