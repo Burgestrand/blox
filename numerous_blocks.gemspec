@@ -11,5 +11,5 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split($\)
   gem.test_files    = 'numerous_blocks_spec.rb'
   gem.require_paths = ["."]
-  gem.version       = NumerousBlocks::VERSION
+  gem.version       = "1.0.0"
 end
