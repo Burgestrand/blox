@@ -1,17 +1,17 @@
-module NumerousBlocks
+module Blox
   def yield_to(name, *args, &block)
-    multi_call(name, *args, &block).__result__
+    blox_call(name, *args, &block).__result__
   end
 
   def yield_to!(name, *args, &block)
-    multi_call(name, *args, &block).__result__!
+    blox_call(name, *args, &block).__result__!
   end
 
   private
 
-  def multi_call(name, *args, &block)
-    multi_block = BasicObject.new
-    (class << multi_block; self; end).instance_eval do
+  def blox_call(name, *args, &block)
+    blox_block = BasicObject.new
+    (class << blox_block; self; end).instance_eval do
       define_method(:__result__) do
         @result
       end
@@ -35,12 +35,12 @@ module NumerousBlocks
       end
     end
 
-    call(multi_block)
-    multi_block
+    call(blox_block)
+    blox_block
   end
 end
 
-Proc.send(:include, NumerousBlocks)
+Proc.send(:include, Blox)
 
 if $0 == __FILE__
   require 'minitest/autorun'

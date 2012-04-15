@@ -1,4 +1,4 @@
-# Numerous blocks
+# Blox
 
 A tiny Ruby gem to aid you when you wish to pass multiple blocks to any ruby method.
 
