@@ -27,10 +27,19 @@ accepts_multiple_blocks(:awesome) do |when|
     puts "Not so awesome"
   end
 end
+
+accepts_multiple_blocks(:not_awesome) do |event|
+  if event.not_awesome?
+    puts ":("
+  else
+    puts "\o/!"
+  end
+end
 ```
 
 If you wish to enforce that at least one of the blocks are executed,
-you may use `block.yield\_to!` (with a bang) instead.
+you may use `block.yield\_to!` (with a bang) instead, which will raise
+an exception if no block was executed.
 
 ## License
 
