@@ -1,17 +1,43 @@
+# Call a callable with the Blox object and return the result.
+#
+# @param (see Blox.object)
+# @return the result of the blox object
+def Blox(block, name, *args, &extra)
+  Blox.object(block, name, *args, &extra).__result__
+end
+
+# Call a callable and return the result, raising if the result is undefined.
+#
+# @raise [LocalJumpError] if none of the blocks was invoked
+# @param (see Blox.object)
+# @return the result of the blox object
+def Blox!(block, name, *args, &extra)
+  Blox.object(block, name, *args, &extra).__result__!
+end
+
 module Blox
-  def yield_to(name, *args, &block)
-    blox_call(name, *args, &block).__result__
+  # @param (see Blox)
+  # @return (see Blox)
+  def yield_to(*args, &extra)
+    Blox(self, *args, &extra)
   end
 
-  def yield_to!(name, *args, &block)
-    blox_call(name, *args, &block).__result__!
+  # @param (see Blox!)
+  # @return (see Blox!)
+  def yield_to!(*args, &extra)
+    Blox!(self, *args, &extra)
   end
 
-  private
+  # Construct a Blox object with the given proc, and call it with the given arguments.
+  #
+  # @param [#call] block
+  # @param [#to_s] name
+  # @param *args any additional args to the multi-block
+  # @return a blox object that responds to __result__ and __result__!
+  def self.object(block, name, *args, &extra)
+    blox_object = BasicObject.new
 
-  def blox_call(name, *args, &block)
-    blox_block = BasicObject.new
-    (class << blox_block; self; end).instance_eval do
+    (class << blox_object; self; end).instance_eval do
       define_method(:__result__) do
         @result
       end
@@ -30,13 +56,13 @@ module Blox
 
       define_method(:method_missing) do |method_name = :method_missing, &handler|
         if name == method_name
-          @result = handler.call(*args, &block)
+          @result = handler.call(*args, &extra)
         end
       end
     end
 
-    call(blox_block)
-    blox_block
+    block.call(blox_object)
+    blox_object
   end
 end
 
