@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |gem|
-  gem.name          = "Numerous blocks"
+  gem.name          = "numerous_blocks"
   gem.authors       = ["Kim Burgestrand"]
   gem.email         = ["kim@burgestrand.se"]
   gem.summary       = "Numerous blocks helps you write Ruby methods that accept multiple blocks"
