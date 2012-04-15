@@ -10,5 +10,5 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split($\)
   gem.test_files    = 'blox.rb'
   gem.require_paths = ["."]
-  gem.version       = "1.0.0"
+  gem.version       = "1.1.0"
 end
