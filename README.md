@@ -17,7 +17,7 @@ def accepts_multiple_blocks(is_awesome, &block)
   end
 end
 
-accepts_multiple_blocks(:awesome) do |is|
+accepts_multiple_blocks(true) do |is|
   is.awesome do |&block|
     puts "Very awesome!"
     block.call
@@ -28,7 +28,7 @@ accepts_multiple_blocks(:awesome) do |is|
   end
 end
 
-accepts_multiple_blocks(:not_awesome) do |event|
+accepts_multiple_blocks(false) do |event|
   if event.not_awesome?
     puts ":("
   else
