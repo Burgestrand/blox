@@ -31,3 +31,7 @@ end
 
 If you wish to enforce that at least one of the blocks are executed,
 you may use `block.yield\_to!` (with a bang) instead.
+
+## License
+
+2-clause (simplified) BSD license. See LICENSE for details.
